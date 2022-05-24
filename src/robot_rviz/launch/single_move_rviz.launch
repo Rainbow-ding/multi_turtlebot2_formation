@@ -1,0 +1,12 @@
+<launch>
+<!-- set map file -->
+<arg name="map" default="empty.yaml" />
+
+    <!-- run map server，and load the map-->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_rviz)/maps/$(arg map)"/>
+    <!-- publish tf transform of map to odom-->
+    <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster1" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /map /robot1/odom 30" />
+    <!-- run rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_rviz)/rviz/single_move.rviz"/>
+
+</launch>

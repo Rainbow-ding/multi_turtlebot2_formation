@@ -1,0 +1,14 @@
+<launch>
+<!-- set map file -->
+<arg name="map" default="warehouse.yaml" />
+
+    <!-- run map server，and load the map-->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_rviz)/maps/$(arg map)"/>
+    <!-- publish tf transform of map to odom-->
+    <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster1" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /map /robot1/odom 30" />
+    <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster2" args="-0.5 1.0 0.0 0.0 0.0 0.0 1.0 /map /robot2/odom 30" />
+    <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster3" args="-1.0 -1.0 0.0 0.0 0.0 0.0 1.0 /map /robot3/odom 30" /> 
+    <!-- run rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot_rviz)/rviz/formation.rviz"/>
+
+</launch>

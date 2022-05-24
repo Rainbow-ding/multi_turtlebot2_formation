@@ -1,0 +1,10 @@
+<launch>
+
+      <!-- 运行formation_robot1节点 -->
+      <node pkg="formation" type="formation_robot1" name="formation_robot1" output="screen"/> 
+      <!-- 运行formation_robot2节点 -->
+      <node pkg="formation" type="formation_robot2" name="formation_robot2" output="screen"/> 
+      <!-- 运行formation_robot3节点 -->
+      <node pkg="formation" type="formation_robot3" name="formation_robot3" output="screen"/> 
+       
+</launch>
